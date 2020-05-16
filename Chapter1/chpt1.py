@@ -151,14 +151,14 @@ salaries_and_tenures = [(83000, 8.7), (88000, 8.1),
 salary_by_tenure = defaultdict(list)
 for salary, tenure in salaries_and_tenures:
     salary_by_tenure[tenure].append(salary)
-print(salary_by_tenure)
+# print(salary_by_tenure)
 
 # Keys are years, each value is average salary for that tenure
 average_salary_by_tenure = {
     tenure: sum(salaries) / len(salaries)
     for tenure, salaries in salary_by_tenure.items()
 }
-print(average_salary_by_tenure)           # 같은 기간의 tenure가 없기에 별다른 값이 나오지 않음
+# print(average_salary_by_tenure)           # 같은 기간의 tenure가 없기에 별다른 값이 나오지 않음
 
 # bucket the tenrues - 경력?을 묶어보자
 def tenure_bucket(tenure):

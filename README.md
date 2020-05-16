@@ -7,7 +7,7 @@ Data Science from Scratch: First Principles with Python 2nd Edition
 따라하며 이해하기
 
 [소스파일](https://github.com/joelgrus/data-science-from-scratch)이 제공되고있다.
-
+[한글판](https://github.com/insightbook/Data-Science-from-Scratch)도 있었다;;;😂
 ---
 
 **보고서 카운트 (0/15)** 		*(보고서 카운트가 (15/15) 가 되고도 업데이트 되기를)*

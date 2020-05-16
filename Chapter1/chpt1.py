@@ -1,6 +1,6 @@
 from __future__ import division
 from collections import Counter
-# from checktype import checktype                        # from [file] import [function]
+from checktype import checktype                        # from [file] import [function]
 from collections import defaultdict
 
 # 'users' 구조 생성
@@ -19,6 +19,8 @@ users = [
 # checktype(users)                                        # user is list type
 # checktype(users[1])                                     # user[i] is dict type
 # print(users[0].keys())          # dict_keys(['id', 'name'])
+# print(users[0]["name"])
+# checktype(users[0]["name"])
 
 # 그룹 간의 우정 암시
 friendship_pairs = [(0, 1), (0, 2), (1, 2), (1, 3), (2, 3), (3, 4),
@@ -33,8 +35,10 @@ friendships = {user["id"]: [] for user in users}
 for i, j in friendship_pairs:
     friendships[i].append(j) # id == i 에 우정 j 추가
     friendships[j].append(i) # id == j 에 우정 i 추가
-# print(friendships)
+# print(friendships)  # {0: [1, 2], 1: [0, 2, 3], 2: [0, 1, 3], 3: [1, 2, 4], 4: [3, 5], 5: [4, 6, 7], 6: [5, 8], 7: [5, 8], 8: [6, 7, 9], 9: [8]}
+# print(friendships[0])       # [1, 2]
 # checktype(friendships[4])               # dict type 은 key : Value 형식으로 데이터가 들어가는데 Value에 list 형식도 가능
+# checktype(friendships)     # dict
 
 def number_of_friends(user):
     user_id = user["id"]                                  # users의 id를 따로 저장
@@ -107,11 +111,11 @@ def data_scientists_who_like(target_interest):          # 해당 흥미를 가�
     if user_interest == target_interest]
 # print(data_scientists_who_like("Big Data"))             # [0, 8, 9]
 
-# Keys are interest, values are lists of user_ids with that interest == 흥미 기주로 유저를 묶음
+# Keys are interest, values are lists of user_ids with that interest == 흥미 기준로 유저를 묶음
 user_ids_by_interest = defaultdict(list)                # from collections import defaultdict <- 추가해야함
 # print(user_ids_by_interest)                           # defaultdict(<class 'list'>, {})
 for user_id, interest in interests:
-    user_ids_by_interest[interest].append(user_id)
+    user_ids_by_interest[interest].append(user_id)  
 # print(user_ids_by_interest)                   # defaultdict(<class 'list'>, {'Hadoop': [0, 9], 'Big Data': [0, 8, 9], ...
 # print(user_ids_by_interest['Hadoop'])           # [0, 9] <- dict 으로 저장되어 key로 value 불러낼 수 있음
 
@@ -147,14 +151,14 @@ salaries_and_tenures = [(83000, 8.7), (88000, 8.1),
 salary_by_tenure = defaultdict(list)
 for salary, tenure in salaries_and_tenures:
     salary_by_tenure[tenure].append(salary)
-# print(salary_by_tenure)
+print(salary_by_tenure)
 
 # Keys are years, each value is average salary for that tenure
 average_salary_by_tenure = {
     tenure: sum(salaries) / len(salaries)
     for tenure, salaries in salary_by_tenure.items()
 }
-# print(average_salary_by_tenure)           # 같은 기간의 tenure가 없기에 별다른 값이 나오지 않음
+print(average_salary_by_tenure)           # 같은 기간의 tenure가 없기에 별다른 값이 나오지 않음
 
 # bucket the tenrues - 경력?을 묶어보자
 def tenure_bucket(tenure):
@@ -184,6 +188,6 @@ words_and_counts = Counter(word
                             for user, interest in interests
                             for word in interest.lower().split())   # 만일 같은 명칭이지만 대문자를 안적을 수도 있으므로 전부 소문자로 바꿈
 
-for word, count in words_and_counts.most_common():      # Counter.most_common() -> 중복된 항목을 내림차순으로 정렬
-    if count > 1:
-        print(word, count)
+# for word, count in words_and_counts.most_common():      # Counter.most_common() -> 중복된 항목을 내림차순으로 정렬
+#     if count > 1:
+#         print(word, count)
